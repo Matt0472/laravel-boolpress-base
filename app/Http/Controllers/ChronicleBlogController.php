@@ -125,7 +125,6 @@ class ChronicleBlogController extends Controller
             'id' => $id,
             'chronicles' => Chronicle::all()
         ];
-
-        return view('chronicle_blog.index', $data);
+        return redirect()->route('chronicle.index')->with('id_delete', $id);
     }
 }

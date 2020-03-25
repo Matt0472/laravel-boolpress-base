@@ -1,5 +1,11 @@
 @extends('chronicle_blog.layouts.layout')
-  
+    @section('header')
+      @if (session('id_delete'))
+        <div class="alert alert-success">
+        <span>Hai cancellato l'ID: {{session('id_delete')}}</span>
+        </div>
+      @endif
+    @endsection
     @section('main-content')
       <div class="wrapper">
         <h1 class="text-center">Chronicle Blog</h1>
