@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChronicleBlog extends Model
+class Chronicle extends Model
 {
     protected $fillable = [
         'author',
@@ -12,7 +12,6 @@ class ChronicleBlog extends Model
         'category',
         'title',
         'img',
-        'article',
-        'updated_at'
+        'article'
     ];
 }

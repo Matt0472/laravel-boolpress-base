@@ -17,10 +17,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{route('chronicle_blog.index')}}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{route('chronicle.index')}}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Create/Update</a>
+        <a class="nav-link" href="{{route('chronicle.create')}}">Create new article</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

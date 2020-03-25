@@ -14,22 +14,21 @@
             <th scope="col">Title</th>
             <th scope="col">Image</th>
             <th scope="col">Article</th>
-            <th scope="col">Updated At</th>
+            
           </tr>
         </thead>
         <tbody>
-          @foreach ($chronicle_blog as $item)
+          @foreach ($chronicles as $chronicle)
             <tr>
-            <th scope="row">{{$item->id}}</th>
-            <td>{{$item->author}}</td>
-            <td>{{$item->author_job}}</td>
-              <td>{{$item->category}}</td>
-              <td>{{$item->title}}</td>
-              <td>{{$item->img}}</td>
-              <td>{{$item->article}}</td>
-              <td>{{$item->created_at}}</td>
+            <th scope="row">{{$chronicle->id}}</th>
+            <td>{{$chronicle->author}}</td>
+            <td>{{$chronicle->author_job}}</td>
+              <td>{{$chronicle->category}}</td>
+              <td>{{$chronicle->title}}</td>
+              <td>{{$chronicle->img}}</td>
+              <td>{{$chronicle->article}}</td>
               <td>
-                <form action="" method="POST">
+                <form action="{{route('chronicle.destroy', $chronicle->id)}}" method="POST">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">DELETE</button>

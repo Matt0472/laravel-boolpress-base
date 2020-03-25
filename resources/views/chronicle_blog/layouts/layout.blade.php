@@ -1,4 +1,4 @@
-@include('wines.layouts.partials._head')
+@include('chronicle_blog.layouts.partials._head')
 
     <header>
       @yield('header')
@@ -14,4 +14,4 @@
 
     @yield('scripts')
     
-@include('wines.layouts.partials._footer')
+@include('chronicle_blog.layouts.partials._footer')

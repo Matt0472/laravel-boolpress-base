@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ChronicleBlog;
+use App\Chronicle;
 
 use Illuminate\Http\Request;
 
@@ -23,8 +23,7 @@ class ChronicleBlogController extends Controller
      */
     public function index()
     {
-        $chronicles = ChronicleBlog::all();
-        dd($chronicles);
+        $chronicles = Chronicle::all();
         return view('chronicle_blog.index', compact('chronicles'));
     }
 
@@ -35,7 +34,7 @@ class ChronicleBlogController extends Controller
      */
     public function create()
     {
-        
+        return view('chronicle_blog.create');
     }
 
     /**
@@ -46,7 +45,18 @@ class ChronicleBlogController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->all();
+        $request->validate($this->validationBlog);
+
+        $newChronicle = new Chronicle();
+        $newChronicle->fill($data);
+        $saved = $newChronicle->save();
+
+        if ($saved) {
+            $newChronicle = Chronicle::orderBy('id', 'desc')->first();
+            return redirect()->route('chronicle.show', $newChronicle);
+        }
+        dd('Articolo non salvato correttamente!');
     }
 
     /**
@@ -55,9 +65,9 @@ class ChronicleBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Chronicle $chronicle)
     {
-        
+        return view('chronicle_blog.show', compact('chronicle'));
     }
 
     /**
@@ -89,8 +99,15 @@ class ChronicleBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Chronicle $chronicle)
     {
-        
+        $id = $chronicle->id;
+        $deleted = $chronicle->delete();
+        $data = [
+            'id' => $id,
+            'chronicles' => Chronicle::all()
+        ];
+
+        return view('chronicle_blog.index', $data);
     }
 }
