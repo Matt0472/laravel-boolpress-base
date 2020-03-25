@@ -14,6 +14,8 @@
             <th scope="col">Title</th>
             <th scope="col">Image</th>
             <th scope="col">Article</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             
           </tr>
         </thead>
@@ -34,6 +36,7 @@
                   <button class="btn btn-danger" type="submit">DELETE</button>
                 </form>
               </td>
+            <td><a class="btn btn-primary" href="{{route('chronicle.edit', $chronicle->id)}}">UPDATE</a></td>
             </tr>
           @endforeach
         </tbody>
