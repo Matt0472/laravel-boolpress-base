@@ -14,7 +14,7 @@ class PhotosTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i = 0; $i < 18; $i++) {
-            $randNumber = rand(1, 3);
+            $randNumber = rand(1, 6);
             $newPhoto = new Photo;
             $newPhoto->title = $faker->sentence($nbWords = 15, $variableNbWords = true);
             $newPhoto->path = $faker->imageUrl($width = 640, $height = 480);
